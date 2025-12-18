@@ -47,6 +47,7 @@ Nesse caso a controller não sabe quem trata o comando.
 
 ### Problemas
 - Esse padrão não atende a recomendação *Dependência Explícita* por "esconder" a dependência do Handler necessário a requisição.
+- Não é possível navegar para a implementação do Handler pelo menu rápido do Visual Studio
 
 ### Quando usar
 - Sistema médio/grande
@@ -141,7 +142,14 @@ C --> D["Entity (regras)"]
 ```
 
 ## Código de Exemplo
-Foi elaborato um projeto de exemplo tipo Monolito (pela praticidade) onde demonstro algumas das característcas das três implementações:
+Foi elaborato um projeto de exemplo onde demonstro algumas das principais características desse padrão. 
+
+Também adicionei um modelo de implementação tratricional com Services para facilitar a comparação da organização e erros comuns que violam as boas práticas.
+
+Algumas considerações consideradas para facilitar o exemplo:
+- O projeto está em modelo Monolito
+- Não foi implementado a camada de Infrastructure
+- Não foi considerada a necessidade de tarefas assíncronas
 
 Acesse primeiramente o *Program.cs* para identificar cada uma.
 

@@ -1,13 +1,22 @@
-﻿using Sample.Domain.Entities;
+﻿namespace Sample.Domain.Entities;
 
-namespace Sample.Domain.Entities
+public class Order
 {
-    public class Order
+    public Guid Id { get; private set; }
+    public DateTime CreateAt { get; private set; }
+    public double Total { get; set; }
+    public Customer Customer { get; private set; } = default!;
+    public ICollection<Product> Products { get; private set; } = new List<Product>();
+
+    public Order() 
+    { 
+        CreateAt = DateTime.Now;
+    }
+
+    public Order(Guid id, DateTime createAt, double total)
     {
-        public int Id { get; set; }
-        public DateTime OrderDate { get; set; }
-        public double Total { get; set; }
-        public Customer Customer { get; set; } = default!;
-        public ICollection<Product>? Products { get; set; } = new List<Product>();
+        Id = id;
+        CreateAt = createAt;
+        Total = total;
     }
 }

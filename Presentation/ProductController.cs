@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+
 using Sample.Application.Abstractions;
+using Sample.Application.DTOs;
 using Sample.Domain.Entities;
 
 namespace Sample.Presentation;
@@ -11,9 +13,12 @@ public class ProductController : ControllerBase
     [HttpGet("{id}")]
     public IActionResult Get([FromServices] IProductService _service, [FromRoute] Guid id)
     {
-        var order = _service.Get(id);
+        var product = _service.Get(id);
 
-        return Ok(order);
+        //PROBLEMA: Controller mais inteligente realizando por vezes manipulação de dados
+        var result = new ProductDto(id, product.Value, product.Quantity);
+
+        return Ok(result);
     }
 
     [HttpPost("{id}/buy")]
